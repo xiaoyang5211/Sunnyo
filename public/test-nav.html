@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>导航与滚动测试</title>
+  <link rel="stylesheet" href="/assets/css/style.css" />
+  <style>
+    /* 简单容器模拟 */
+    main { max-width: 960px; margin: 2rem auto; padding-bottom: 200vh; }
+    .navbar { max-width: 960px; margin: 1rem auto; }
+  </style>
+</head>
+<body>
+  <!-- 顶部导航（直接嵌入 header 结构） -->
+  <header class="navbar bg-white bg-opacity-90 rounded-xl shadow-sm p-4 mx-auto mt-6" style="backdrop-filter: blur(3px);">
+    <div class="flex items-center justify-between">
+      <a href="/" class="text-primary no-underline font-fumofumo text-xl">Fumomo</a>
+      <!-- 移动端汉堡按钮 -->
+      <button id="nav-toggle" class="md:hidden flex flex-col bg-transparent border-none cursor-pointer p-3 relative z-50 w-10 h-10 justify-center items-center" aria-label="切换菜单">
+        <span class="w-6 h-0.5 my-0.5 rounded transition-all duration-300 bg-primary"></span>
+        <span class="w-6 h-0.5 my-0.5 rounded transition-all duration-300 bg-primary"></span>
+        <span class="w-6 h-0.5 my-0.5 rounded transition-all duration-300 bg-primary"></span>
+      </button>
+      <!-- 桌面端导航（注意：含 hidden md:flex，验证我们移除 .hidden 全局覆盖后是否正常显示） -->
+      <nav class="hidden md:flex items-center gap-4" id="nav-menu-desktop">
+        <a href="/" class="nav-link text-muted no-underline hover:text-primary">首页</a>
+        <a href="/articles.php" class="nav-link text-muted no-underline hover:text-primary">文章</a>
+        <a href="/projects.php" class="nav-link text-muted no-underline hover:text-primary">项目</a>
+        <a href="/about.php" class="nav-link text-muted no-underline hover:text-primary">关于</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- 移动端遮罩与侧边菜单容器 -->
+  <div id="nav-overlay" class="hidden fixed inset-0 bg-black bg-opacity-30 z-40"></div>
+  <nav id="nav-menu" class="hidden fixed top-0 right-0 w-64 h-full bg-white shadow-lg z-50 p-4">
+    <a href="/" class="block py-2">首页</a>
+    <a href="/articles.php" class="block py-2">文章</a>
+    <a href="/projects.php" class="block py-2">项目</a>
+    <a href="/about.php" class="block py-2">关于</a>
+  </nav>
+
+  <main>
+    <h1>滚动到底部后再次下滑跳转测试</h1>
+    <p>向下滚动至页面底部，观察底部提示与跳转逻辑。</p>
+    <p>此页面高度很长，以便测试“再次下滑跳转”。</p>
+  </main>
+
+  <script>
+    // 基础路径与下一页提示（模拟 footer.php 中的变量）
+    window.__BASE_PATH = '';
+    window.__NEXT_PAGE = '/articles.php';
+  </script>
+  <script src="/assets/js/main.js"></script>
+</body>
+</html>

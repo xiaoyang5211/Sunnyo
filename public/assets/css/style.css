@@ -1,0 +1,121 @@
+/* 字体定义（PHP 公共版）：加载 XiaokeNailao 源字体 */
+@font-face {
+  font-family: 'XiaokeNailao';
+  src: url('../../fonts/XiaokeNailao/xknl.ttf?v=1') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* 全局字体设置：默认使用源字体，兼容其它备选（覆盖 Tailwind 预设） */
+html, body {
+  font-family: 'XiaokeNailao', 'Comic Sans MS', 'Comic Sans', 'Comic Neue', 'Chalkduster', 'Bradley Hand', 'Brush Script MT', 'Lucida Handwriting', 'Marker Felt', 'Snell Roundhand', 'Apple Chancery', 'Zapf Chancery', cursive, fantasy, sans-serif;
+}
+
+/* 字体缩放兼容：先 -webkit，再标准 text-size-adjust */
+html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+
+/* 基础品牌色与通用样式 */
+:root {
+  --primary: #8b5a8c;
+  --muted: #666666;
+}
+
+.text-primary { color: var(--primary); }
+.bg-primary { background-color: var(--primary); }
+.bg-primary-10 { background-color: rgba(139, 90, 140, 0.10); }
+.border-primary { border-color: var(--primary); }
+.border-primary-10 { border-color: rgba(139, 90, 140, 0.10); }
+.text-muted { color: var(--muted); }
+
+.font-fumofumo { font-family: 'XiaokeNailao', 'Comic Sans MS', 'Comic Sans', cursive, sans-serif; }
+
+/* 导航交互 */
+#nav-toggle { transition: all 0.3s ease; }
+#nav-toggle:hover { background-color: rgba(139, 90, 140, 0.1); border-radius: 6px; }
+/* 交互与导航微调 */
+#nav-toggle.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+#nav-toggle.active span:nth-child(2) { opacity: 0; transform: translateX(20px); }
+#nav-toggle.active span:nth-child(3) { transform: rotate(-45deg) translate(7px, -6px); }
+
+.nav-link:hover { color: var(--primary) !important; }
+
+/* 首页动画辅助类 */
+.logo { opacity: 0; transform: scale(0.5) translateY(-3rem); }
+.subtitle { opacity: 0; transform: translateY(2rem); }
+.content { opacity: 0; transform: translateY(3rem); }
+.bounce-in { animation: bounceIn 0.6s ease-out forwards; }
+.fade-in { animation: fadeIn 0.6s ease-out forwards; }
+.fade-in-delayed { animation: fadeIn 0.8s ease-out forwards; }
+
+@keyframes bounceIn {
+  0% { transform: scale(0.5) translateY(-3rem); opacity: 0; }
+  60% { transform: scale(1.05) translateY(0); opacity: 1; }
+  100% { transform: scale(1) translateY(0); opacity: 1; }
+}
+
+@keyframes fadeIn {
+  0% { opacity: 0; transform: translateY(1rem); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+.feature-card { transition: all 0.3s ease; }
+.feature-card:hover { transform: translateY(-0.5rem) scale(1.05); }
+
+/* 自定义光标（简化版） */
+body.custom-cursor-active { cursor: none; }
+.custom-cursor, .custom-cursor-follower {
+  position: fixed; left: 0; top: 0; width: 8px; height: 8px; border-radius: 50%; pointer-events: none; z-index: 10000;
+}
+.custom-cursor { background: var(--primary); opacity: 0.9; transform: translate(-50%, -50%); }
+.custom-cursor-follower { border: 2px solid var(--primary); opacity: 0.5; transform: translate(-50%, -50%); }
+.custom-cursor.hover { transform: translate(-50%, -50%) scale(1.2); }
+.custom-cursor-follower.hover { opacity: 0.8; }
+
+/* 全局背景：移除渐变，采用纯色白底以保持清爽，同时保留其余源代码风格 */
+body {
+  background: #ffffff;
+}
+
+/* 背景滚动锁定（菜单打开时） */
+html.no-scroll, body.no-scroll {
+  overflow: hidden !important;
+  touch-action: none;
+  overscroll-behavior: contain;
+}
+
+/* 明确隐藏规则（仅作用于覆盖层与菜单，避免全局 .hidden 破坏 md:flex 等响应式显示） */
+#nav-overlay.hidden, #nav-overlay[hidden] { pointer-events: none !important; }
+#nav-menu.hidden, #nav-menu[hidden] { display: none !important; }
+
+/* 替代内联样式的类 */
+.backdrop-blur-3 { -webkit-backdrop-filter: blur(3px); backdrop-filter: blur(3px); }
+.shadow-brand { box-shadow: 0 8px 25px rgba(139, 90, 140, 0.15); }
+
+/* 页面过渡动画（对齐 Nuxt app.vue 的 page 过渡） */
+.page-enter-active,
+.page-leave-active { transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
+.page-enter-from { opacity: 0; transform: translateY(30px); }
+.page-enter-to { opacity: 1; transform: translateY(0); }
+.page-leave-from { opacity: 1; transform: translateY(0); }
+.page-leave-to { opacity: 0; transform: translateY(-30px); }
+
+/* 版心优化：在超宽屏保持阅读舒适（背景仍为全屏） */
+main > section { max-width: min(1200px, 92vw); }
+
+/* 卡片淡入（用于页面内容中的主要块） */
+@keyframes fadeUp { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+.card-fade-up { animation: fadeUp 0.45s ease-out forwards; }
+
+/* 轻微悬浮与阴影统一 */
+.card-hover { transition: transform 0.2s ease, box-shadow 0.2s ease; }
+.card-hover:hover { transform: translateY(-4px); box-shadow: 0 10px 22px rgba(139,90,140,0.12); }
+
+/* 友链弹窗进场动画 */
+@keyframes modalOverlayIn { from { opacity: 0; } to { opacity: 1; } }
+@keyframes modalPanelIn { from { opacity: 0; transform: translateY(10px) scale(0.98); } to { opacity: 1; transform: translateY(0) scale(1); } }
+.modal-overlay-in { animation: modalOverlayIn 0.25s ease-out both; }
+.modal-panel-in { animation: modalPanelIn 0.3s cubic-bezier(0.22, 1, 0.36, 1) both; will-change: transform, opacity; }
+/* 首页公告弹窗顶部入场动画 */
+@keyframes modalPanelInTop { from { opacity: 0; transform: translateY(-24px) scale(0.98); } to { opacity: 1; transform: translateY(0) scale(1); } }
+.modal-panel-in-top { animation: modalPanelInTop 0.34s cubic-bezier(0.22, 1, 0.36, 1) both; will-change: transform, opacity; }

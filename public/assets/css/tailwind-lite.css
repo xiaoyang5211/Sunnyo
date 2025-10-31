@@ -1,0 +1,51 @@
+/* Tailwind Lite Fallback: minimal utilities to keep header/nav usable when CDN is blocked */
+/* Display */
+.hidden { display: none !important; }
+.flex { display: flex !important; }
+
+/* Responsive: md breakpoint (768px) */
+.md\:flex { display: none !important; }
+@media (min-width: 768px) {
+  .md\:flex { display: flex !important; }
+}
+
+/* Flexbox */
+.items-center { align-items: center !important; }
+.justify-between { justify-content: space-between !important; }
+.gap-4 { gap: 1rem !important; }
+
+/* Spacing */
+.p-4 { padding: 1rem !important; }
+.mt-6 { margin-top: 1.5rem !important; }
+.mx-auto { margin-left: auto !important; margin-right: auto !important; }
+
+/* Sizing */
+.w-10 { width: 2.5rem !important; }
+.h-10 { height: 2.5rem !important; }
+.max-w-5xl { max-width: 64rem !important; }
+
+/* Typography & colors */
+.text-primary { color: #8b5a8c !important; }
+.text-muted { color: #666 !important; }
+.no-underline { text-decoration: none !important; }
+.bg-white { background-color: #ffffff !important; }
+.bg-opacity-90 { background-color: rgba(255,255,255,0.9) !important; }
+.rounded-xl { border-radius: 0.75rem !important; }
+.shadow-sm { box-shadow: 0 1px 2px rgba(0,0,0,0.05) !important; }
+
+/* Positioning helpers */
+.relative { position: relative !important; }
+.fixed { position: fixed !important; }
+.inset-0 { top:0; right:0; bottom:0; left:0; }
+.z-40 { z-index: 40 !important; }
+.z-50 { z-index: 50 !important; }
+
+/* Simple button bars inside #nav-toggle */
+#nav-toggle span { display: block; }
+.w-6 { width: 1.5rem !important; }
+.h-0\.5 { height: 0.125rem !important; }
+.my-0\.5 { margin-top: 0.125rem !important; margin-bottom: 0.125rem !important; }
+.rounded { border-radius: 0.25rem !important; }
+.bg-primary { background-color: #8b5a8c !important; }
+.transition-all { transition: all 0.3s ease; }
+.duration-300 { transition-duration: 300ms; }

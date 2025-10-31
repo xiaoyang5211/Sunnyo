@@ -1,0 +1,73 @@
+/* 字体定义：加载 XiaokeNailao 源字体（非 public 版本） */
+@font-face {
+  font-family: 'XiaokeNailao';
+  src: url('/fonts/XiaokeNailao/xknl.ttf?v=1') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* 全局字体设置：默认使用源字体，兼容其它备选 */
+html, body {
+  font-family: 'XiaokeNailao', 'Comic Sans MS', 'Comic Sans', 'Comic Neue', 'Chalkduster', 'Bradley Hand', 'Brush Script MT', 'Lucida Handwriting', 'Marker Felt', 'Snell Roundhand', 'Apple Chancery', 'Zapf Chancery', cursive, fantasy, sans-serif;
+}
+
+/* 字体缩放兼容：Chrome/Edge/Firefox/Safari */
+html { text-size-adjust: 100%; -webkit-text-size-adjust: 100%; }
+
+/* 导航交互 */
+#nav-toggle { transition: all 0.3s ease; }
+#nav-toggle:hover { background-color: rgba(139, 90, 140, 0.1); border-radius: 6px; }
+#nav-toggle.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+#nav-toggle.active span:nth-child(2) { opacity: 0; transform: translateX(20px); }
+#nav-toggle.active span:nth-child(3) { transform: rotate(-45deg) translate(7px, -6px); }
+
+.nav-link:hover { color: #8b5a8c !important; }
+
+/* 首页动画辅助类 */
+.logo { opacity: 0; transform: scale(0.5) translateY(-3rem); }
+.subtitle { opacity: 0; transform: translateY(2rem); }
+.content { opacity: 0; transform: translateY(3rem); }
+.bounce-in { animation: bounceIn 0.6s ease-out forwards; }
+.fade-in { animation: fadeIn 0.6s ease-out forwards; }
+.fade-in-delayed { animation: fadeIn 0.8s ease-out forwards; }
+
+@keyframes bounceIn {
+  0% { transform: scale(0.5) translateY(-3rem); opacity: 0; }
+  60% { transform: scale(1.05) translateY(0); opacity: 1; }
+  100% { transform: scale(1) translateY(0); opacity: 1; }
+}
+
+@keyframes fadeIn {
+  0% { opacity: 0; transform: translateY(1rem); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+.feature-card { transition: all 0.3s ease; }
+.feature-card:hover { transform: translateY(-0.5rem) scale(1.05); }
+
+/* 自定义光标（简化版） */
+body.custom-cursor-active { cursor: none; }
+.custom-cursor, .custom-cursor-follower {
+  position: fixed; left: 0; top: 0; width: 8px; height: 8px; border-radius: 50%; pointer-events: none; z-index: 10000;
+}
+.custom-cursor { background: var(--primary); opacity: 0.9; transform: translate(-50%, -50%); }
+.custom-cursor-follower { border: 2px solid var(--primary); opacity: 0.5; transform: translate(-50%, -50%); }
+.custom-cursor.hover { transform: translate(-50%, -50%) scale(1.2); }
+.custom-cursor-follower.hover { opacity: 0.8; }
+
+/* 全局背景：移除渐变，采用纯色白底（与 public 同步），保留其它源样式 */
+body {
+  background: #ffffff;
+}
+
+/* 通用响应式修正 */
+html.no-scroll, body.no-scroll {
+  overflow: hidden !important;
+  touch-action: none;
+  overscroll-behavior: contain;
+}
+img, video { max-width: 100%; height: auto; display: block; }
+@media (max-width: 768px) {
+  .navbar { padding: 0.75rem; }
+}
