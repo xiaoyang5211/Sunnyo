@@ -80,7 +80,7 @@ deploy_napcat() {
         mkdir -p /opt/NapCat
         cd /opt/NapCat
 
-        curl -L -o NapCat.zip https://gh-proxy.org/https://github.com/NapNeko/NapCat/archive/refs/heads/master.zip
+        curl -L -o NapCat.zip https://nclatest.znin.net/NapNeko/NapCat-Installer/main/script/install.sh
         if [ $? -ne 0 ]; then
             echo -e "\033[1;31m源码下载失败，请检查网络\033[0m"
             return
